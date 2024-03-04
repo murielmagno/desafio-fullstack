@@ -1,1 +1,20 @@
-Escreva aqui os detalhes do projeto (backend) e como executá-lo
+Este é o backend, uma aplicação construída em Go (Golang) utilizando os frameworks Gin e GORM.
+
+*Requisitos do Sistema
+Para executar o backend do Projeto, você precisará ter os seguintes softwares instalados em sua máquina:
+-Docker
+
+* Configuração do Ambiente
+Clone o Repositório:
+- git clone <url-do-repositório>
+cd backend
+
+Inicie os Contêineres Docker:
+- docker-compose up
+
+Acesso à Aplicação
+Após a inicialização bem-sucedida dos contêineres Docker, você pode acessar a aplicação em http://localhost:8080.
+
+Teste da API
+Para testar as rotas da API, você pode utilizar ferramentas como Postman ou curl.
+- Collection do postman disponível na raiz do projeto `Desafio - Lucree.postman_collection`.

@@ -1,0 +1,289 @@
+{
+	"info": {
+		"_postman_id": "6734275c-f59f-42bf-afe9-d537c18b3782",
+		"name": "Desafio - Lucree",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14549645"
+	},
+	"item": [
+		{
+			"name": "create person",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"João\",\r\n    \"last_name\": \"das Neves\",\r\n    \"birthday\": \"1991-09-91\",\r\n    \"password\": \"123456\",\r\n    \"username\": \"joao_das_nevaes\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/account/person",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create card",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"title\": \"Cartão 1\",\r\n   \"pan\": \"5527952393064634\",\r\n   \"expiry_mm\": \"03\",\r\n   \"expiry_yyyy\": \"2022\",\r\n   \"security_code\": \"656\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/account/card",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"card"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create transferencia",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"friend_id\": \"b4665db0-a2d2-4270-b4db-e306c4f0fa00\",\r\n    \"sender_id\": \"3f6c8d31-4202-4b94-9bc8-1db10497e625\",\r\n    \"total_to_transfer\": 100,\r\n    \"pan\": \"5527952393065624\",\r\n    \"card_id\": \"4ac4a7cc-58e1-405a-83c3-65bbf14d3308\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/account/transfer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get person",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/account/person/70721595-3bc1-4949-8824-12dee906fd3b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"person",
+						"70721595-3bc1-4949-8824-12dee906fd3b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get friends",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/account/friends/3f6c8d31-4202-4b94-9bc8-1db10497e625",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"friends",
+						"3f6c8d31-4202-4b94-9bc8-1db10497e625"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get cards",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/account/cards/3f6c8d31-4202-4b94-9bc8-1db10497e625",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"cards",
+						"3f6c8d31-4202-4b94-9bc8-1db10497e625"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get transfers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": \"3f6c8d31-4202-4b94-9bc8-1db10497e625\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/account/transfers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"transfers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"João\",\r\n    \"last_name\": \"das Neves\",\r\n    \"birthday\": \"1991-09-91\",\r\n    \"password\": \"*****\",\r\n    \"username\": \"joao_das_neves\",\r\n    \"friends\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/account/person/70721595-3bc1-4949-8824-12dee906fd3b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"person",
+						"70721595-3bc1-4949-8824-12dee906fd3b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD friend",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"friends\": [\"254103f9-e0da-4b18-8ba5-628d2f158da8\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/account/person/friend/3f6c8d31-4202-4b94-9bc8-1db10497e625",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"person",
+						"friend",
+						"3f6c8d31-4202-4b94-9bc8-1db10497e625"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

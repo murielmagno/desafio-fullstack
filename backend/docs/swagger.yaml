@@ -1,0 +1,310 @@
+basePath: /api
+definitions:
+  models.Card:
+    properties:
+      balance:
+        type: number
+      card_id:
+        type: string
+      date:
+        type: string
+      expiry_mm:
+        type: string
+      expiry_yyyy:
+        type: string
+      limit:
+        type: number
+      pan:
+        type: string
+      security_code:
+        type: string
+      title:
+        type: string
+      userId:
+        type: string
+    type: object
+  models.Person:
+    properties:
+      birthday:
+        type: string
+      cards:
+        items:
+          $ref: '#/definitions/models.Card'
+        type: array
+      createdAt:
+        type: string
+      first_name:
+        type: string
+      friends:
+        description: Lista de amigos
+        items:
+          $ref: '#/definitions/models.Person'
+        type: array
+      last_name:
+        type: string
+      password:
+        type: string
+      updatedAt:
+        type: string
+      user_id:
+        type: string
+      username:
+        type: string
+    type: object
+  models.Transfer:
+    properties:
+      card_id:
+        type: string
+      friend_id:
+        type: string
+      pan:
+        type: string
+      sender_id:
+        type: string
+      total_to_transfer:
+        type: number
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    url: http://demo.com/support
+  description: Create Go REST API in Gin Framework
+  termsOfService: demo.com
+  title: Account API
+  version: "1.0"
+paths:
+  /account/card/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Create a new card for a person
+      operationId: create-card
+      parameters:
+      - description: Person ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Card details
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/models.Card'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Card'
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      summary: Create Card
+      tags:
+      - Card
+  /account/cards/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get all cards of a person
+      operationId: get-cards
+      parameters:
+      - description: Person ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            items:
+              $ref: '#/definitions/models.Card'
+            type: array
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      summary: Get Cards
+      tags:
+      - Card
+  /account/person:
+    post:
+      consumes:
+      - application/json
+      description: Create a new person
+      operationId: create-person
+      parameters:
+      - description: Person object
+        in: body
+        name: person
+        required: true
+        schema:
+          $ref: '#/definitions/models.Person'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: '#/definitions/models.Person'
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: Create Person
+      tags:
+      - Person
+  /account/person/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing person
+      operationId: update-person
+      parameters:
+      - description: Person ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Person object
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/models.Person'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/models.Person'
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      summary: Update Person
+      tags:
+      - Person
+  /account/person/friend/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Add friends to a person
+      operationId: add-friend
+      parameters:
+      - description: Person ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      summary: Add Friend
+      tags:
+      - Person
+  /account/transfer:
+    post:
+      consumes:
+      - application/json
+      description: Create a new transfer
+      operationId: create-transfer
+      parameters:
+      - description: Transfer Request Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/models.Transfer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully created transfer
+          schema:
+            $ref: '#/definitions/models.Transfer'
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: Create Transfer
+      tags:
+      - Transfer
+  /person/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get a person by ID
+      operationId: get-person
+      parameters:
+      - description: Person ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully retrieved person
+          schema:
+            $ref: '#/definitions/models.Person'
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+      summary: Get Person
+      tags:
+      - Person
+  /transfers/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get transfers by user ID
+      operationId: get-transfers
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully retrieved transfers
+          schema:
+            items:
+              $ref: '#/definitions/models.Transfer'
+            type: array
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+      summary: Get Transfers
+      tags:
+      - Transfer
+schemes:
+- http
+- https
+swagger: "2.0"
