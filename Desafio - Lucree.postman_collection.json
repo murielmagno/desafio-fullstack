@@ -193,7 +193,7 @@
 			"response": []
 		},
 		{
-			"name": "Get transfers",
+			"name": "Get bank-statement",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -219,6 +219,39 @@
 					"path": [
 						"account",
 						"transfers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get bank-statement id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": \"3f6c8d31-4202-4b94-9bc8-1db10497e625\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/account/bank-statement/e2a25318-88db-44ff-9510-f739b4dc4287",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"bank-statement",
+						"e2a25318-88db-44ff-9510-f739b4dc4287"
 					]
 				}
 			},

@@ -16,7 +16,6 @@ func ConnectDB() {
 	if err != nil {
 		panic("failed to connect database")
 	}
-	// Opção para criar automaticamente a tabela se ela ainda não existir
 	err = DB.AutoMigrate(&models.Person{}, &models.Card{}, &models.Transfer{})
 	if err != nil {
 		panic("failed to migrate database")
@@ -70,7 +69,6 @@ func GetPersonById(personIDStr string) (models.Person, error) {
 func GetFriendIDs(senderID string) ([]string, error) {
 	var friendIDs []string
 
-	// Consulta SQL personalizada para buscar os IDs dos amigos do remetente
 	if err := DB.Table("person_friends").
 		Select(" people.id ").
 		Joins("JOIN people ON people.id = person_friends.friend_id").

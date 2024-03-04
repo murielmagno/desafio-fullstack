@@ -19,7 +19,8 @@ func AccountHandler() {
 	r.POST(account+"card/:id", controllers.PostCard)
 	r.GET(account+"cards/:id", controllers.GetCards)
 	r.POST(account+"transfer", controllers.PostTransfer)
-	r.GET(account+"transfers", controllers.GetTransfers)
+	r.GET(account+"bank-statement/:id", controllers.GetTransfers)
+	r.GET(account+"bank-statement", controllers.GetTransfersFriends)
 	// docs route
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	r.Run()

@@ -19,6 +19,38 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/account/bank-statement": {
+            "get": {
+                "description": "Get transfers from friends based on their IDs",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transfers"
+                ],
+                "summary": "Get transfers from friends",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Transfer"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
         "/account/card/{id}": {
             "post": {
                 "description": "Create a new card for a person",
@@ -284,46 +316,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/person/{id}": {
-            "get": {
-                "description": "Get a person by ID",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Person"
-                ],
-                "summary": "Get Person",
-                "operationId": "get-person",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Person ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successfully retrieved person",
-                        "schema": {
-                            "$ref": "#/definitions/models.Person"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    }
-                }
-            }
-        },
-        "/transfers/{user_id}": {
+        "/bank-statement/{user_id}": {
             "get": {
                 "description": "Get transfers by user ID",
                 "consumes": [
@@ -354,6 +347,45 @@ const docTemplate = `{
                             "items": {
                                 "$ref": "#/definitions/models.Transfer"
                             }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/person/{id}": {
+            "get": {
+                "description": "Get a person by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Person"
+                ],
+                "summary": "Get Person",
+                "operationId": "get-person",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Person ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved person",
+                        "schema": {
+                            "$ref": "#/definitions/models.Person"
                         }
                     },
                     "400": {
